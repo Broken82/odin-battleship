@@ -23,3 +23,19 @@ test('cant place ships out of bounds', () =>{
     }
     ).toThrow(Error)
 })
+
+test('can send an attack', () => {
+    let board = Gameboard()
+
+    expect(board.receiveAttack(0,0)).toBe(false)
+})
+
+
+test('returns true when ship is hit', () => {
+    let ship = Ship(2)
+    let board = Gameboard()
+
+    board.place(0,0,ship,'vertical')
+
+    expect(board.receiveAttack(0,0)).toBe(true)
+})

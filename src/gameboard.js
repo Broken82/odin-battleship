@@ -37,10 +37,23 @@ export function Gameboard(){
     }
 
     function receiveAttack(x, y){
-        
+        //cell that was hit
+        if(this.board[x][y] == "hit"){
+            return false
+        }
+
+        //empty cell
+        if(this.board[x][y] == null){
+            this.board[x][y] = "hit"
+            return false
+        }
+
+        //else its a ship
+        this.board[x][y] = "hit"
+        return true
     }
 
 
-    return {board, place}
+    return {board, place, receiveAttack}
 
 }
