@@ -53,7 +53,22 @@ export function Gameboard(){
         return true
     }
 
+    function isGameOver(){
+        let length = this.board.length
 
-    return {board, place, receiveAttack}
+        for(let i = 0; i < length - 1; i++ ){
+            for(let j = 0; j < length - 1; j++){
+                if(this.board[i][j] != "hit" && this.board[i][j] != null){
+                    return false
+                }
+            }
+        }
+
+        return true
+
+    }
+
+
+    return {board, place, receiveAttack, isGameOver}
 
 }

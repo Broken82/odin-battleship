@@ -39,3 +39,16 @@ test('returns true when ship is hit', () => {
 
     expect(board.receiveAttack(0,0)).toBe(true)
 })
+
+
+test('game ends', () => {
+    let ship = Ship(1)
+    let board = Gameboard()
+
+    board.place(0,0,ship,'vertical')
+    board.receiveAttack(0,0)
+
+    expect(board.isGameOver()).toBe(true)
+})
+
+
