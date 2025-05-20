@@ -368,3 +368,59 @@
     }
     
     
+body{
+  background-color: #212121;
+}
+
+h1{
+  color: rgba(255, 255, 255, 0.788);
+  font-size: 4rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.grids{
+  display: flex;
+  gap: 30px;
+}
+
+.player-grid,.computer-grid{
+  background-color: #303030;
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+
+}
+
+.grid-element{
+  border: 1px solid rgba(255, 255, 255, 0.788);
+}
+
+.buttons{
+  display: flex;
+  gap: 80px;
+  margin-top: 30px
+}
+
+button{
+  width: 100px;
+  height: 35px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #303030;
+  color: rgba(255, 255, 255, 0.788);;
+}
+
+.randomize{
+  width: 100px;
+}
+
+
