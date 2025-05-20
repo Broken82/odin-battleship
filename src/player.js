@@ -1,7 +1,7 @@
 import { Gameboard } from "./gameboard";
 
 
-function Player(name){
+export function Player(name){
     let gameboard = Gameboard()
     return {name, gameboard}
 
