@@ -32,7 +32,6 @@ export function Driver(){
         let currShip = shipArr.pop()
 
         while(!player.gameboard.place(randomX, randomY, currShip, randomDir)){
-
             randomX = randomNumber()
             randomY = randomNumber()
             randomDir = randomDirection()

@@ -15,9 +15,10 @@ export function generateBoard(driver){
             userBoard.append(cell)
         }
     }
-
-    console.log(driver.playerHuman)
+    //place random ships
     driver.randomPlacement(driver.playerHuman)
+    renderShips(userBoard, driver)
+   
 
 
 
@@ -25,11 +26,29 @@ export function generateBoard(driver){
 
     //for computer
         for(let i = 0; i < 10; i++){
-        for (let j = 0; j < 10; j++){
-            let cell = document.createElement("div")
-            cell.classList.add("grid-element")
+            for (let j = 0; j < 10; j++){
+                let cell = document.createElement("div")
+                cell.classList.add("grid-element")
 
-            computerBoard.append(cell)
+                computerBoard.append(cell)
+            }
+    }
+     driver.randomPlacement(driver.playerComputer)
+
+
+}
+
+function renderShips(board, driver){
+    console.log(board.children)
+
+    for(let cell of board.children){
+        if(driver.playerHuman.gameboard.board[cell.dataset.x][cell.dataset.y] != null){
+            cell.classList.add("ship")
         }
     }
+        
+   
+
+
+
 }
