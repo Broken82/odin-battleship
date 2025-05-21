@@ -6,7 +6,11 @@ export function Gameboard(){
         let length = ship.length
 
         if(!inbound(x,y,ship,orientation)){
-            throw new Error('Coordinates out of bounds!')
+            return false
+        }
+
+        if(!collision(x,y,ship,orientation)){
+            return false
         }
 
         if(orientation == 'vertical'){
@@ -19,7 +23,35 @@ export function Gameboard(){
                 this.board[x][i] = ship
             }
         }
+
+        return true
+
         
+    }
+
+    function collision(x, y, ship, orientation){
+        let length = ship.length
+        console.log(ship)
+                console.log("x: " + x )
+                console.log(" y: " + y )
+                console.log("orientation: " + orientation)
+                console.log(board)
+        if(orientation == 'vertical'){
+            for(let i = x; i < x + length; i++){
+                if(board[i][y] != null){
+
+                    return false
+                }
+            }
+        }
+        else{
+            for(let i = y; i < y + length; i++){
+                if(board[x][i] != null){
+                    return false
+                }
+            }
+        }
+        return true
     }
 
     function inbound(x, y, ship, orientation){
