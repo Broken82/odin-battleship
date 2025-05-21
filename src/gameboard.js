@@ -70,13 +70,13 @@ export function Gameboard(){
 
     function receiveAttack(x, y){
         //cell that was hit
-        if(this.board[x][y] == "hit"){
+        if(this.board[x][y] == "hit" || this.board[x][y == "miss"]){
             return false
         }
 
         //empty cell
         if(this.board[x][y] == null){
-            this.board[x][y] = "hit"
+            this.board[x][y] = "miss"
             return false
         }
 

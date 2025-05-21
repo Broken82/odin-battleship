@@ -4,6 +4,9 @@ export function generateBoard(driver){
     let userBoard = document.querySelector(".player-grid")
     let computerBoard = document.querySelector(".computer-grid")
 
+    userBoard.innerHTML = ''
+    computerBoard.innerHTML = ''
+
     //for user
     for(let i = 0; i < 10; i++){
         for (let j = 0; j < 10; j++){
@@ -19,11 +22,6 @@ export function generateBoard(driver){
     driver.randomPlacement(driver.playerHuman)
     renderShips(userBoard, driver)
    
-
-
-
-
-
     //for computer
         for(let i = 0; i < 10; i++){
             for (let j = 0; j < 10; j++){

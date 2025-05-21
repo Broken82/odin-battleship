@@ -401,7 +401,15 @@ main {
 }
 
 .grid-element{
-  border: 1px solid rgba(255, 255, 255, 0.788);
+  border: 1px solid rgba(240, 255, 255, 0.432);
+}
+
+.grid-element:hover{
+  background-color: rgba(240, 255, 255, 0.432);
+}
+
+.ship:hover{
+  background-color: rgb(40, 119, 223);
 }
 
 .buttons{
@@ -425,6 +433,14 @@ button{
 
 
 .ship{
-  background-color: blue;
+  background-color: rgb(40, 119, 223);
+}
+
+.disabled{
+  background-color: #535353;
+}
+
+.disabled .grid-element:hover{
+  background-color: #535353;
 }
 

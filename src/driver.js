@@ -1,5 +1,4 @@
 import { Player } from "./player"
-import { generateBoard } from "./domRender"
 import { Ship } from "./ship"
 
 export function Driver(){
