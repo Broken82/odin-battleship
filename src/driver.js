@@ -1,9 +1,11 @@
 import { Player } from "./player"
 import { Ship } from "./ship"
+import { renderBoard } from "./domRender"
 
 export function Driver(){
     let playerHuman = Player('human')
     let playerComputer = Player('computer')
+    let turn = playerHuman
 
 
     function onStart(){
@@ -35,16 +37,44 @@ export function Driver(){
             randomY = randomNumber()
             randomDir = randomDirection()
         }
+    }
+}
+
+
+    function playerTurn(x, y){
+
+        //Doesn't count already clicked cells
+        if(this.playerComputer.gameboard.board[x][y] == 'miss' || this.playerComputer.gameboard.board[x][y] == 'hit'){
+            return
         }
 
+        //Hit and save if was hit
+        let Hit = this.playerComputer.gameboard.receiveAttack(x,y)
+        
         
 
+        renderBoard(playerHuman)
+        renderBoard(playerComputer)
+
+        if(Hit){
+            return
+        }
 
 
 
+    }
 
 
-
+    function nextTurn(){
+        if(this.turn == this.playerHuman){
+            this.turn = this.playerComputer
+            //computerTurn()
+        }
+        else{
+            //Normal player turn
+            this.turn = this.playerHuman
+            return
+        }
     }
 
 
@@ -57,6 +87,6 @@ export function Driver(){
     }
 
 
-    return {playerHuman, playerComputer, randomPlacement}
+    return {playerHuman, playerComputer, randomPlacement, playerTurn}
 
 }

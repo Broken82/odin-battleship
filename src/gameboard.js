@@ -69,6 +69,7 @@ export function Gameboard(){
     }
 
     function receiveAttack(x, y){
+
         //cell that was hit
         if(this.board[x][y] == "hit" || this.board[x][y == "miss"]){
             return false
@@ -82,6 +83,7 @@ export function Gameboard(){
 
         //else its a ship
         this.board[x][y] = "hit"
+        console.log("ship was hit")
         return true
     }
 
@@ -90,7 +92,7 @@ export function Gameboard(){
 
         for(let i = 0; i < length - 1; i++ ){
             for(let j = 0; j < length - 1; j++){
-                if(this.board[i][j] != "hit" && this.board[i][j] != null){
+                if(this.board[i][j] != "hit" && this.board[i][j] != null && this.board[i][j] != 'miss'){
                     return false
                 }
             }

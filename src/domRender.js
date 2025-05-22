@@ -1,11 +1,13 @@
 
-
-export function generateBoard(driver){
     let userBoard = document.querySelector(".player-grid")
     let computerBoard = document.querySelector(".computer-grid")
 
+export function generateBoard(driver){
+
+
     userBoard.innerHTML = ''
     computerBoard.innerHTML = ''
+    computerBoard.classList.add('disabled')
 
     //for user
     for(let i = 0; i < 10; i++){
@@ -27,6 +29,9 @@ export function generateBoard(driver){
             for (let j = 0; j < 10; j++){
                 let cell = document.createElement("div")
                 cell.classList.add("grid-element")
+                cell.dataset.x = i;
+                cell.dataset.y = j;
+
 
                 computerBoard.append(cell)
             }
@@ -44,9 +49,65 @@ function renderShips(board, driver){
             cell.classList.add("ship")
         }
     }
+
+
+}
+
+export function prepareComputerBoard(driver){
+    computerBoard.classList.remove('disabled')
+    // Add listeners
+
+    for(let cell of computerBoard.children){
+        cell.addEventListener("click", (e) => {
+            const cordX = cell.dataset.x
+            const cordY = cell.dataset.y
+            console.log(cell)
+            console.log(cordY)
+
+            driver.playerTurn(cordX, cordY)
+            
+        })
+    }
+
+}
+
+
+export function renderBoard(player){
+
+
+    //for computer
+    if(player.name == 'computer'){
+            for(let cell of computerBoard.children){
+            const cordX = cell.dataset.x
+            const cordY = cell.dataset.y
         
-   
+            let currCell = player.gameboard.board[cordX][cordY]
+        
+            cell.classList.remove('hit')
+            cell.classList.remove('miss')
+        
+            if(currCell == 'hit') cell.classList.add('hit')
+            else if(currCell == 'miss') cell.classList.add('miss')
 
+        }
+        
+    }
+    else{
+    //for Player
+    for(let cell of userBoard.children){
+        const cordX = cell.dataset.x
+        const cordY = cell.dataset.y
 
+        let currCell = player.gameboard.board[cordX][cordY]
+
+        cell.classList.remove('hit')
+        cell.classList.remove('miss')
+        cell.classList.remove('ship')
+
+        if(currCell == 'hit') cell.classList.add('hit')
+        else if(currCell == 'miss') cell.classList.add('miss')
+        else if(currCell != null) cell.classList.add('ship')
+    }
+    }
 
 }

@@ -444,3 +444,20 @@ button{
   background-color: #535353;
 }
 
+.hit{
+  background-color: rgba(238, 10, 10, 0.822);
+}
+
+.hit:hover{
+  background-color: rgba(238, 10, 10, 0.822);
+
+}
+
+.miss{
+  background-color: rgba(240, 255, 255, 0.432);
+}
+
+.miss:hover{
+  background-color: rgba(240, 255, 255, 0.432);
+}
+
