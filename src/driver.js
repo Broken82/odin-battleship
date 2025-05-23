@@ -8,13 +8,6 @@ export function Driver(){
     let turn = playerHuman
 
 
-    function onStart(){
-
-
-
-    }
-
-
     function randomPlacement(player){
         const carrier = Ship(5)
         const battleship = Ship(4)
@@ -43,22 +36,29 @@ export function Driver(){
 
     function playerTurn(x, y){
 
+        //prevents from clicking while computer is taking turn
+        if(turn != playerHuman){
+            return
+        }
+
         //Doesn't count already clicked cells
         if(this.playerComputer.gameboard.board[x][y] == 'miss' || this.playerComputer.gameboard.board[x][y] == 'hit'){
             return
         }
 
         //Hit and save if was hit
-        let Hit = this.playerComputer.gameboard.receiveAttack(x,y)
+        let hit = this.playerComputer.gameboard.receiveAttack(x,y)
         
         
 
         renderBoard(playerHuman)
         renderBoard(playerComputer)
 
-        if(Hit){
+        if(hit){
             return
         }
+
+        nextTurn()
 
 
 
@@ -66,15 +66,45 @@ export function Driver(){
 
 
     function nextTurn(){
-        if(this.turn == this.playerHuman){
-            this.turn = this.playerComputer
-            //computerTurn()
+        if(turn == playerHuman){
+            turn = playerComputer
+            computerTurn()
         }
         else{
-            //Normal player turn
-            this.turn = this.playerHuman
+            //Human player turn
+            turn = playerHuman
             return
         }
+    }
+
+    function computerTurn(){
+        
+        
+
+        const cordX = randomNumber()
+        const cordY = randomNumber()
+
+        if(playerHuman.gameboard.board[cordX][cordY] == 'miss' || playerHuman.gameboard.board[cordX][cordY] == 'hit'){
+            turn = playerHuman
+            nextTurn()
+            return
+           
+        }
+
+        let hit = playerHuman.gameboard.receiveAttack(cordX, cordY)
+
+        renderBoard(playerHuman)
+        renderBoard(playerComputer)
+
+        if(hit){
+            turn = playerHuman
+            nextTurn()
+            return
+        }
+
+        nextTurn()
+
+
     }
 
 
