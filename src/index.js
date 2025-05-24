@@ -11,9 +11,11 @@ generateBoard(driver)
 
 const randomizeButton = document.querySelector(".randomize")
 const startButton = document.querySelector(".start")
+const wonStatus = document.querySelector("h3")
 
 randomizeButton.addEventListener("click", (e) => {
     driver = Driver()
+    wonStatus.classList.remove("visible")
     generateBoard(driver)
 })
 

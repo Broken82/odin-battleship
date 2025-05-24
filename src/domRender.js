@@ -1,6 +1,7 @@
 
-    let userBoard = document.querySelector(".player-grid")
-    let computerBoard = document.querySelector(".computer-grid")
+let userBoard = document.querySelector(".player-grid")
+let computerBoard = document.querySelector(".computer-grid")
+let wonStatus = document.querySelector("h3")
 
 export function generateBoard(driver){
 
@@ -110,4 +111,18 @@ export function renderBoard(player){
     }
     }
 
+
+
+
+}
+
+
+export function displayWinner(player){
+    if(player.name == 'human'){
+        wonStatus.innerHTML = 'You win!'
+    }
+    else{
+        wonStatus.innerHTML = 'Computer wins!'
+    }
+    wonStatus.classList.add('visible')
 }

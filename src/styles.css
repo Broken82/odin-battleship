@@ -375,6 +375,18 @@ body{
 h1{
   color: rgba(255, 255, 255, 0.788);
   font-size: 4rem;
+  margin: 0;
+  margin-top: 15px;
+}
+
+h3{
+  margin: 0;
+  visibility: hidden;
+  color: rgba(255, 255, 255, 0.788);
+}
+
+.visible{
+  visibility: visible;
 }
 
 main {
@@ -405,7 +417,7 @@ main {
 }
 
 .grid-element:hover{
-  background-color: rgba(240, 255, 255, 0.432);
+  background-color: rgba(240, 255, 255, 0.199);
 }
 
 .ship:hover{
@@ -425,6 +437,7 @@ button{
   border: 0;
   background-color: #303030;
   color: rgba(255, 255, 255, 0.788);;
+  cursor: pointer;
 }
 
 .randomize{
@@ -454,10 +467,10 @@ button{
 }
 
 .miss{
-  background-color: rgba(240, 255, 255, 0.432);
+  background-color: rgba(240, 255, 255, 0.199);
 }
 
 .miss:hover{
-  background-color: rgba(240, 255, 255, 0.432);
+  background-color: rgba(240, 255, 255, 0.199);
 }
 

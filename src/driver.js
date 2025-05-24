@@ -1,11 +1,12 @@
 import { Player } from "./player"
 import { Ship } from "./ship"
-import { renderBoard } from "./domRender"
+import { renderBoard, displayWinner } from "./domRender"
 
 export function Driver(){
     let playerHuman = Player('human')
     let playerComputer = Player('computer')
     let turn = playerHuman
+    let isGameOver = false
 
 
     function randomPlacement(player){
@@ -36,6 +37,10 @@ export function Driver(){
 
     function playerTurn(x, y){
 
+        if(isGameOver){
+            return
+        }
+
         //prevents from clicking while computer is taking turn
         if(turn != playerHuman){
             return
@@ -53,6 +58,10 @@ export function Driver(){
 
         renderBoard(playerHuman)
         renderBoard(playerComputer)
+
+        if(playerComputer.gameboard.isGameOver()){
+            handleGameOver(playerHuman)
+        }
 
         if(hit){
             return
@@ -77,7 +86,18 @@ export function Driver(){
         }
     }
 
+    function handleGameOver(player){
+        isGameOver = true
+        displayWinner(player)
+        
+    }
+
+
     function computerTurn(){
+
+        if(isGameOver){
+            return
+        }
         
         
 
@@ -91,10 +111,17 @@ export function Driver(){
            
         }
 
-        let hit = playerHuman.gameboard.receiveAttack(cordX, cordY)
+        setTimeout(attackSquare, 400)
+
+        function attackSquare(){
+            let hit = playerHuman.gameboard.receiveAttack(cordX, cordY)
 
         renderBoard(playerHuman)
         renderBoard(playerComputer)
+
+        if(playerHuman.gameboard.isGameOver()){
+            handleGameOver(playerComputer)
+        }
 
         if(hit){
             turn = playerHuman
@@ -103,6 +130,10 @@ export function Driver(){
         }
 
         nextTurn()
+
+        }
+
+    
 
 
     }
